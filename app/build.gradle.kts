@@ -44,4 +44,9 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
     implementation("com.google.firebase:firebase-auth")
+
+    implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
+
+
+
 }

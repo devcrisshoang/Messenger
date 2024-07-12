@@ -3,6 +3,7 @@ package com.example.messenger.models;
 import com.google.firebase.Timestamp;
 
 public class UserModel {
+    private String userId;
     private String phoneNumber;
     private String username;
     private Timestamp timestamp;
@@ -11,10 +12,19 @@ public class UserModel {
     public UserModel() {}
 
     // Constructor có tham số
-    public UserModel(String phoneNumber, String username, Timestamp timestamp) {
+    public UserModel(String userId,String phoneNumber, String username, Timestamp timestamp) {
+        this.userId = userId;
         this.phoneNumber = phoneNumber;
         this.username = username;
         this.timestamp = timestamp;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     // Getter và Setter
