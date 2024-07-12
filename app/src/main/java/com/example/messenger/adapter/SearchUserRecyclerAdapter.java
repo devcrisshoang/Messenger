@@ -1,6 +1,7 @@
 package com.example.messenger.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.messenger.ChatActivity;
 import com.example.messenger.R;
 import com.example.messenger.models.UserModel;
+import com.example.messenger.utils.AndroidUtil;
 import com.example.messenger.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -32,7 +35,10 @@ public class SearchUserRecyclerAdapter extends FirestoreRecyclerAdapter<UserMode
             userModelViewHolder.usernameText.setText(userModel.getUsername()+"(Me)");
         }
         userModelViewHolder.itemView.setOnClickListener(v -> {
-
+            Intent intent = new Intent(context, ChatActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            AndroidUtil.passUserAsIntent(intent,userModel);
+            context.startActivity(intent);
         });
     }
 
