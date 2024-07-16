@@ -81,6 +81,13 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                recyclerView.smoothScrollToPosition(0);
+            }
+        });
     }
     public void setWidget(){
         messageInput = findViewById(R.id.chat_message_input);
